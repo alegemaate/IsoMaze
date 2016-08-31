@@ -13,13 +13,12 @@
 #include "tools.h"
 #include "colors.h"
 
-#define MAP_WIDTH 41
-#define MAP_LENGTH 41
+#define MAP_WIDTH 1001
+#define MAP_LENGTH 1001
 #define MAP_HEIGHT 10
 
 #define TILE_WIDTH 32
 #define TILE_LENGTH 32
-#define TILE_HEIGHT 32
 
 #define NUM_COLORS 10
 
@@ -72,7 +71,7 @@ int CarveMaze( int (*_maze)[MAP_WIDTH][MAP_LENGTH], int width, int  height, int 
   (*_maze)[itr_x][itr_y] = 2;
 
   // Run till return
-  while( true){
+  while( !key[KEY_ESC]){
     // Set random dirs index
     // 0 UP, 1 RIGHT, 2 DOWN, 3 LEFT
     int dirs[4] = { 0, 1, 2, 3};
@@ -139,7 +138,22 @@ int CarveMaze( int (*_maze)[MAP_WIDTH][MAP_LENGTH], int width, int  height, int 
     }
 
     // Visualize
+    if( offset_x < -(itr_x - itr_y) * TILE_WIDTH/2 + SCREEN_W/2)
+      offset_x += 16;
+    else
+      offset_x -= 16;
+
+    if( offset_y < -(itr_x + itr_y) * TILE_LENGTH/4 + SCREEN_H/2)
+      offset_y += 16;
+    else
+      offset_y -= 16 ;
+
+    offset_x = -(itr_x - itr_y) * TILE_WIDTH/2 + SCREEN_W/2;
+    offset_y = -(itr_x + itr_y) * TILE_LENGTH/4 + SCREEN_H/2;
+
     draw();
+
+    rest( 50);
 
     /*while( !key[KEY_SPACE]){}
     while( key[KEY_SPACE]){}*/
@@ -189,8 +203,8 @@ BITMAP *generate_cube( int _color, int _width, int _height, int _angle){
 }
 
 // Draw cube at
-void draw_cube_at( BITMAP* _buffer, BITMAP* _image, int _x, int _y, int _z){
-  draw_sprite( _buffer, _image, (_x - _y) * TILE_WIDTH/2, (_x + _y) * TILE_LENGTH/4 - _z * TILE_WIDTH/2);
+void draw_cube_at( BITMAP* _buffer, BITMAP* _image, int _x, int _y, int _z, int _offset_x, int _offset_y){
+  draw_sprite( _buffer, _image, ((_x - _y) * TILE_WIDTH/2) + _offset_x, ((_x + _y) * TILE_LENGTH/4 - _z * TILE_LENGTH/2) + _offset_y);
 }
 
 // Init game
@@ -204,8 +218,17 @@ void setup(){
   install_sound( DIGI_AUTODETECT, MIDI_AUTODETECT, ".");
 
   set_color_depth( 32);
-  set_gfx_mode( GFX_AUTODETECT_WINDOWED, 1280, 960, 0, 0);
-  set_window_title("Stronghold Clone");
+
+  int s_width;
+  int s_height;
+  get_desktop_resolution( &s_width, &s_height);
+  set_gfx_mode( GFX_AUTODETECT, s_width, s_height, 0, 0);
+
+  //set_gfx_mode( GFX_AUTODETECT_WINDOWED, 1280, 960, 0, 0);
+
+
+
+  set_window_title("isoMaze");
 
   // Init our colors
   colors::initColors();
@@ -322,10 +345,10 @@ void draw(){
   for( int i = 0; i < MAP_WIDTH; i++)
     for( int t = 0; t < MAP_LENGTH; t++)
       if( maze[i][t] != 0)
-        draw_cube_at( buffer, tile_types[maze[i][t]], i + offset_x, t + offset_y, 0);
+        draw_cube_at( buffer, tile_types[maze[i][t]], i, t, 0, offset_x, offset_y);
 
   // Player
-  draw_cube_at( buffer, player, player_x + offset_x, player_y + offset_y, 1);
+  draw_cube_at( buffer, player, player_x, player_y, 1, offset_x, offset_y);
 
   // Cursor
   draw_sprite( buffer, cursor, mouse_x, mouse_y);
