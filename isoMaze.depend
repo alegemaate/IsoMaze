@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1472604746 source:c:\users\allan\documents\games indev\isomaze\src\colors.cpp
+	"colors.h"
+
+1472604350 c:\users\allan\documents\games indev\isomaze\include\colors.h
+	<allegro.h>
+
+1472607748 source:c:\users\allan\documents\games indev\isomaze\src\main.cpp
+	<allegro.h>
+	<alpng.h>
+	<math.h>
+	<iostream>
+	"tools.h"
+	"colors.h"
+
+1472521039 c:\users\allan\documents\games indev\isomaze\include\tools.h
+	<allegro.h>
+	<time.h>
+	<string>
+	<sstream>
+
+1472521097 source:c:\users\allan\documents\games indev\isomaze\src\tools.cpp
+	"tools.h"
+
