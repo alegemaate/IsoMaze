@@ -13,12 +13,12 @@
 #include "tools.h"
 #include "colors.h"
 
-#define MAP_WIDTH 1001
-#define MAP_LENGTH 1001
+#define MAP_WIDTH 41
+#define MAP_LENGTH 41
 #define MAP_HEIGHT 10
 
-#define TILE_WIDTH 32
-#define TILE_LENGTH 32
+#define TILE_WIDTH 64
+#define TILE_LENGTH 64
 
 #define NUM_COLORS 10
 
@@ -138,22 +138,10 @@ int CarveMaze( int (*_maze)[MAP_WIDTH][MAP_LENGTH], int width, int  height, int 
     }
 
     // Visualize
-    if( offset_x < -(itr_x - itr_y) * TILE_WIDTH/2 + SCREEN_W/2)
-      offset_x += 16;
-    else
-      offset_x -= 16;
-
-    if( offset_y < -(itr_x + itr_y) * TILE_LENGTH/4 + SCREEN_H/2)
-      offset_y += 16;
-    else
-      offset_y -= 16 ;
-
     offset_x = -(itr_x - itr_y) * TILE_WIDTH/2 + SCREEN_W/2;
     offset_y = -(itr_x + itr_y) * TILE_LENGTH/4 + SCREEN_H/2;
 
     draw();
-
-    rest( 50);
 
     /*while( !key[KEY_SPACE]){}
     while( key[KEY_SPACE]){}*/
@@ -226,8 +214,6 @@ void setup(){
 
   //set_gfx_mode( GFX_AUTODETECT_WINDOWED, 1280, 960, 0, 0);
 
-
-
   set_window_title("isoMaze");
 
   // Init our colors
@@ -298,14 +284,14 @@ void setup(){
 void update(){
   // Move map
   if( key[KEY_LEFT])
-    offset_x ++;
+    offset_x += 4;
   else if( key[KEY_RIGHT])
-    offset_x--;
+    offset_x -= 4;
 
   if( key[KEY_UP])
-    offset_y++;
+    offset_y += 4;
   else if( key[KEY_DOWN])
-    offset_y--;
+    offset_y -= 4;
 
   //. Move player
   int delta_x = 0;
@@ -321,12 +307,14 @@ void update(){
 
   // Check if u can move
   // Bounds
-  if( player_x + delta_x < MAP_WIDTH && player_x + delta_x >= 0 && player_y + delta_y < MAP_WIDTH && player_y + delta_y >= 0){
-    // Map
-    if( maze[player_x + delta_x][player_y + delta_y] != 0){
-      player_x += delta_x;
-      player_y += delta_y;
-      rest( 70);
+  if( delta_x != 0 || delta_y != 0){
+    if( player_x + delta_x < MAP_WIDTH && player_x + delta_x >= 0 && player_y + delta_y < MAP_WIDTH && player_y + delta_y >= 0){
+      // Map
+      if( maze[player_x + delta_x][player_y + delta_y] != 0){
+        player_x += delta_x;
+        player_y += delta_y;
+        rest( 70);
+      }
     }
   }
 
