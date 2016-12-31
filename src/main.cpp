@@ -13,12 +13,13 @@
 #include "tools.h"
 #include "colors.h"
 
-#define MAP_WIDTH 41
-#define MAP_LENGTH 41
-#define MAP_HEIGHT 10
+#define MAP_WIDTH 120
+#define MAP_LENGTH 120
 
-#define TILE_WIDTH 64
-#define TILE_LENGTH 64
+#define MAP_HEIGHT 1
+
+#define TILE_WIDTH  128
+#define TILE_LENGTH 128
 
 #define NUM_COLORS 10
 
@@ -210,9 +211,9 @@ void setup(){
   int s_width;
   int s_height;
   get_desktop_resolution( &s_width, &s_height);
-  set_gfx_mode( GFX_AUTODETECT, s_width, s_height, 0, 0);
+  //set_gfx_mode( GFX_AUTODETECT, s_width, s_height, 0, 0);
 
-  //set_gfx_mode( GFX_AUTODETECT_WINDOWED, 1280, 960, 0, 0);
+  set_gfx_mode( GFX_AUTODETECT_WINDOWED, 1280, 960, 0, 0);
 
   set_window_title("isoMaze");
 
