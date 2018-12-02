@@ -18,8 +18,8 @@
 
 #define MAP_HEIGHT 1
 
-#define TILE_WIDTH  128
-#define TILE_LENGTH 128
+#define TILE_WIDTH  16
+#define TILE_LENGTH 16
 
 #define NUM_COLORS 10
 
@@ -139,8 +139,8 @@ int CarveMaze( int (*_maze)[MAP_WIDTH][MAP_LENGTH], int width, int  height, int 
     }
 
     // Visualize
-    offset_x = -(itr_x - itr_y) * TILE_WIDTH/2 + SCREEN_W/2;
-    offset_y = -(itr_x + itr_y) * TILE_LENGTH/4 + SCREEN_H/2;
+    //offset_x = -(itr_x - itr_y) * TILE_WIDTH/2 + SCREEN_W/2;
+    //offset_y = -(itr_x + itr_y) * TILE_LENGTH/4 + SCREEN_H/2;
 
     draw();
 
