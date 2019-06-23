@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1561251800 source:c:\users\alege\documents\github\isomaze\src\colors.cpp
+	"colors.h"
+
+1561252343 c:\users\alege\documents\github\isomaze\include\colors.h
+
+1561251521 source:c:\users\alege\documents\github\isomaze\src\tools.cpp
+	"tools.h"
+	<stdlib.h>
+
+1561251457 c:\users\alege\documents\github\isomaze\include\tools.h
+
+1561252239 source:c:\users\alege\documents\github\isomaze\src\main.cpp
+	<allegro.h>
+	<math.h>
+	"tools.h"
+	"colors.h"
+
+1561252734 source:c:\users\alege\documents\github\isomaze\src\tools.c
+	"tools.h"
+	<stdlib.h>
+
+1561252653 source:c:\users\alege\documents\github\isomaze\src\main.c
+	<allegro.h>
+	<math.h>
+	"tools.h"
+	"colors.h"
+
