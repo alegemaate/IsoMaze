@@ -1,5 +1,6 @@
 #ifndef TOOLS_H
 #define TOOLS_H
+
 #define BACKGROUND false
 #define FOREGROUND true
 #define MAIN_MENU 0
@@ -7,43 +8,10 @@
 #define OPTIONS 2
 #define STORY 3
 
-#include <allegro.h>
-#include <time.h>
-#include <string>
-#include <sstream>
-
-extern int game_state;
-
 // Random number generator. Use int random(highest,lowest);
-extern int random(int newLowest, int newHighest);
-
-// Error reporting
-extern void abort_on_error(const char *message);
-
-// Set next state
-extern void set_next_state( int newState );
-
-// Load and error check images
-extern BITMAP *load_bitmap_ex( const char *path);
-
-// Load and error check sounds
-extern SAMPLE *load_sample_ex( const char *path);
-
-// Load and error check fonts
-extern FONT *load_font_ex( const char *path);
-
-extern bool collision(int xMin1, int xMax1, int xMin2, int xMax2, int yMin1, int yMax1, int yMin2, int yMax2);
-
-// Convert string to int
-extern int stoi(std::string text);
-
-// String to int
-extern std::string itos(int number);
-
-// Check if joystick in use
-extern bool joy_buttonpressed( int joystick_num);
+extern int random (int newLowest, int newHighest);
 
 // Clamp values
-extern int clip(int n, int lower, int upper);
+extern int clip (int n, int lower, int upper);
 
 #endif // TOOLS_H
