@@ -33,6 +33,7 @@
 			<Add option="-pedantic" />
 			<Add option="-Wextra" />
 			<Add option="-Wall" />
+			<Add option="-std=c11" />
 		</Compiler>
 		<Linker>
 			<Add option="-lalleg44" />
