@@ -48,6 +48,7 @@ Temporary Items
 
 *.o
 *.exe
-.layout
-.depend
+*.layout
+*.depend
 *.res
+CppCheckResults.xml
