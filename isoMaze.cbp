@@ -40,13 +40,17 @@
 		<Unit filename="include/colors.h">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="include/tools.h">
+		<Unit filename="include/constants.h" />
+		<Unit filename="include/cube.h" />
+		<Unit filename="include/cube.j" />
+		<Unit filename="include/helpers.h" />
+		<Unit filename="src/cube.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/helpers.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/main.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/tools.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>
