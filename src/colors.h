@@ -9,7 +9,7 @@
 #define COLORS_H
 
 // Init colors
-enum colors {
+enum Color {
   // Basic
   COLOUR_TRANSPARENT = 0xff00ff,
   COLOUR_BLACK = 0x000000,
