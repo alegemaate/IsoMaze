@@ -38,5 +38,4 @@ enum colors {
   COLOUR_ASBESTOS = 0x7f8c8d
 };
 
-
-#endif // COLORS_H
+#endif  // COLORS_H

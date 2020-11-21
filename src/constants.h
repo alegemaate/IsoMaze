@@ -2,7 +2,7 @@
 #define MAP_LENGTH 120
 #define MAP_HEIGHT 1
 
-#define TILE_WIDTH  16
+#define TILE_WIDTH 16
 #define TILE_LENGTH 16
 
 #define NUM_COLORS 10
